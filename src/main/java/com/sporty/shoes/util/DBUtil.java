@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.sporty.shoes.entity.Category;
 import com.sporty.shoes.entity.Product;
+import com.sporty.shoes.entity.Purchase;
 import com.sporty.shoes.entity.User;
 import com.sporty.shoes.repositry.ProductRepository;
+import com.sporty.shoes.repositry.PurchaseRepository;
 import com.sporty.shoes.repositry.UserRepository;
 import com.sporty.shoes.security.SecuredPasswordGenerator;
 
@@ -22,22 +24,37 @@ public class DBUtil {
 	@Autowired
 	ProductRepository productRepositry;
 	
+	@Autowired
+	PurchaseRepository purchaseRepositry;
+	
 	@Bean
 	public void onStartup() {
 		
 		
 		User user = new User();
-		user.setUsername("admin");
+		user.setName("admin");
 		user.setPassword(SecuredPasswordGenerator.securedPassword("admin"));
 		user.setCreatedAt(new Date());
 		user.setModifiedAt(new Date());
 		user.setEnabled(true);
 		user.setRole("ROLE_ADMIN");
+		user.setEmail("admin@sporty-shoes.com");
 		userRepositry.save(user);
 		
 		
 		
 		for(int i = 1; i < 50; i++) {
+			user = new User();
+			user.setName("user"+i);
+			user.setPassword(SecuredPasswordGenerator.securedPassword("user"+i));
+			user.setCreatedAt(new Date());
+			user.setModifiedAt(new Date());
+			user.setEnabled(true);
+			user.setRole("ROLE_USER");
+			user.setEmail("user"+i+"@gmail.com");
+			userRepositry.save(user);
+
+			
 			Product product = new Product();
 			product.setCategory(Category.MISC);
 			product.setCost((double) (120+i));
@@ -49,17 +66,14 @@ public class DBUtil {
 			product.setModel("Model Number "+i);
 			productRepositry.save(product);
 		
-			user = new User();
-			user.setUsername("user"+i);
-			user.setPassword(SecuredPasswordGenerator.securedPassword("user"+i));
-			user.setCreatedAt(new Date());
-			user.setModifiedAt(new Date());
-			user.setEnabled(true);
-			user.setRole("ROLE_USER");
-			userRepositry.save(user);
 			
-		}
-	
-		
+			Purchase purchase = new Purchase();
+			purchase.setUser(user);
+			purchase.setProduct(product);
+			purchase.setCreatedAt(new Date());
+			purchase.setUpdatedAt(new Date());
+			purchaseRepositry.save(purchase);
+			
+		}		
 	}
 }

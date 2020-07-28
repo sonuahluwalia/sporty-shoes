@@ -90,7 +90,7 @@ public class ProductRestController {
 	@GetMapping(path = "/getProducts")
 	<T> ResponseEntity<T> getProductsPage(@RequestParam int page, @RequestParam int size) {
 		if (page < 0 || size < 0) {
-			return new ResponseEntity<T>((T) Constants.invalidParams, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<T>((T) Constants.invalidPageAndSize, HttpStatus.BAD_REQUEST);
 		} else {
 			PageRequest pageRequest = PageRequest.of(page - 1, size);
 			return new ResponseEntity<T>((T) productService.getProducts(pageRequest), HttpStatus.OK);

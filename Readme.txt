@@ -45,6 +45,7 @@ Product id exists during updation
 Get Products by providing valid size and page number
 Update valid category
 
+
 User API:
 read(using pagination by giving page number & size)
 findByName
@@ -52,4 +53,9 @@ findByName
 Validation on User:
 If user is not there, user not found message is given
 
-Purchase Reports:
+Purchase API:
+read(using pagination by giving page number & size)
+findByDate
+findByCategory
+
+

@@ -32,11 +32,11 @@ public class UserServiceImpl implements UserService {
 		user.setPassword(SecuredPasswordGenerator.securedPassword(password));
 		user.setModifiedAt(new Date());
 		if (userRepositry.save(user) != null ) {
-			System.out.println(user.getUsername() + " password changed successfully");
-			return user.getUsername() + " password changed successfully";	
+			System.out.println(user.getName() + " password changed successfully");
+			return user.getName() + " password changed successfully";	
 		} else {
-			System.out.println(user.getUsername() + " password not changed successfully");
-			return user.getUsername() + " password not changed successfully";
+			System.out.println(user.getName() + " password not changed successfully");
+			return user.getName() + " password not changed successfully";
 		}
 		
 	}
