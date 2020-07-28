@@ -24,6 +24,8 @@ public class DBUtil {
 	
 	@Bean
 	public void onStartup() {
+		
+		
 		User user = new User();
 		user.setUsername("admin");
 		user.setPassword(SecuredPasswordGenerator.securedPassword("admin"));
@@ -32,8 +34,9 @@ public class DBUtil {
 		user.setEnabled(true);
 		user.setRole("ROLE_ADMIN");
 		userRepositry.save(user);
-		System.out.println("admin user saved");
-
+		
+		
+		
 		for(int i = 1; i < 50; i++) {
 			Product product = new Product();
 			product.setCategory(Category.MISC);
@@ -45,7 +48,18 @@ public class DBUtil {
 			product.setName("Product Name "+ i);
 			product.setModel("Model Number "+i);
 			productRepositry.save(product);
+		
+			user = new User();
+			user.setUsername("user"+i);
+			user.setPassword(SecuredPasswordGenerator.securedPassword("user"+i));
+			user.setCreatedAt(new Date());
+			user.setModifiedAt(new Date());
+			user.setEnabled(true);
+			user.setRole("ROLE_USER");
+			userRepositry.save(user);
+			
 		}
+	
 		
 	}
 }

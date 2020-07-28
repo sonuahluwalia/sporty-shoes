@@ -2,6 +2,7 @@ package com.sporty.shoes.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
 	private Long id;
 	private String name;
 	private String description;
@@ -31,5 +33,5 @@ public class Product {
 	private String model;
 	private Double cost;
 	private Category category;
-	
+
 }

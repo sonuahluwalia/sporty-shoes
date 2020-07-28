@@ -14,6 +14,9 @@ public class Constants {
 	
 	public static final String productIdLtZero = "Product id should be greater than zero";
 	
+	public static final String invalidParams = "Invalid Parameters";
+	public static final String userNotFound = "User not found";
+	
 	
 	
 }

@@ -3,8 +3,8 @@ Requirements:
 2. Admin should be able to change password - done
 3. Admin can add/delete/modify products - done
 4. Admin can change product categories -done
-5. Admin can view list of all users
-6. Admin can search users by name
+5. Admin can view list of all users - done
+6. Admin can search users by name - done
 7. Admin can view purchase reports
 8. Admin can filter the purchase reports by date and category
 
@@ -19,6 +19,8 @@ Thymeleaf
 Spring JPA (Hibernate implementation)
 Spring REST
 Swagger 2
+ModelMapper
+
 
 Login:
 Username: admin
@@ -33,7 +35,7 @@ http://localhost:8080/swagger-ui.html
 Product API:
 add
 delete
-read(page number & size)
+read(using pagination by giving page number & size)
 update
 
 Validations on Product:
@@ -41,5 +43,13 @@ Product name cannot be empty during adding
 Product id is not null or empty during updation
 Product id exists during updation
 Get Products by providing valid size and page number
+Update valid category
 
+User API:
+read(using pagination by giving page number & size)
+findByName
 
+Validation on User:
+If user is not there, user not found message is given
+
+Purchase Reports:

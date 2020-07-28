@@ -4,6 +4,8 @@ package com.sporty.shoes.service.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +40,19 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
+
+
+	@Override
+	public Page<User> getUsers(Pageable pageable) {
+		return (Page<User>) userRepositry.findAllByPage(pageable);
+	}
+
+
+	@Override
+	public User findUserByName(String name) {
+		return userRepositry.getUserByUsername(name);
+	}
+	
+	
 
 }
