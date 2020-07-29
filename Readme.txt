@@ -1,3 +1,6 @@
+Github URL:
+https://github.com/sonuahluwalia/sporty-shoes.git
+
 Requirements:
 1. Admin should be able to login/logout - done
 2. Admin should be able to change password - done
