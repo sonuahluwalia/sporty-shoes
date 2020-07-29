@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.sporty.shoes.entity.Purchase;
 
 @Repository
-public interface PurchaseRepository extends CrudRepository<Purchase, Long> {
+public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 
 //	SELECT DATE(ColumnName) FROM tablename
 //  @Query("SELECT p FROM Purchase p WHERE DATE(p.createdAt) = :createdAt")

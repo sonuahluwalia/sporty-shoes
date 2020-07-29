@@ -6,7 +6,8 @@ Requirements:
 5. Admin can view list of all users - done
 6. Admin can search users by name - done
 7. Admin can view purchase reports - done
-8. Admin can filter the purchase reports by date and category
+8. Admin can filter the purchase reports by date and category - done
+9. Test cases of all the features 
 
 
 Technologies Used:
@@ -57,9 +58,10 @@ If user is not there, user not found message is given
 Purchase API:
 read(using pagination by giving page number & size)
 findByDate
-
 findByCategory
 
+
+Some test url:
 
 curl -u admin:admin -X GET "http://localhost:8080/purchase/getPurchaseReportByCreatedDate?createdAt=2020-07-29&page=1&size=1" -H "accept: */*"
 
@@ -73,5 +75,8 @@ curl -u admin:admin -X GET "http://localhost:8080/purchase/getPurchases?page=1&s
 
 curl  -u admin:admin -X GET "http://localhost:8080/purchase/getPurchaseReportByCategory?category=MISC&page=1&size=1" -H "accept: */*"
 
+curl  -u admin:admin -X GET "http://localhost:8080/purchase/getPurchaseReportByCategory?category=MMISC&page=1&size=1" -H "accept: */*"
 
 curl -u admin:admin -X POST "http://localhost:8080/product/add" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"category\": \"sfds\", \"cost\": 0, \"description\": \"string\", \"manufacturerName\": \"string\", \"model\": \"string\", \"productname\": \"string\"}"
+
+curl -u admin:admin -X POST "http://localhost:8080/product/add" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"category\": \"MISC\", \"cost\": 0, \"description\": \"string\", \"manufacturerName\": \"string\", \"model\": \"string\", \"productname\": \"string\"}"
