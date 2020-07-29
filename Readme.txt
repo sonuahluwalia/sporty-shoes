@@ -20,7 +20,8 @@ Spring JPA (Hibernate implementation)
 Spring REST
 Swagger 2
 ModelMapper
-
+Apache Commons Validator
+Javax Validator API
 
 Login:
 Username: admin
@@ -59,3 +60,4 @@ findByDate
 findByCategory
 
 
+curl -u admin:admin -X GET "http://localhost:8080/purchase/getPurchaseReportByCreatedDate?createdAt=2020-07-29&page=1&size=1" -H "accept: */*"

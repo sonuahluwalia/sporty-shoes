@@ -55,7 +55,7 @@ public class ProductRestController {
 	public <T> ResponseEntity<T> updateProduct(@Valid @RequestParam Long productId, @Valid @RequestBody ProductDTO productDTO,
 			BindingResult result) {
 		List<String> errorMessages = ControllerUtil.errorHandling(result);
-		System.out.println("Error message : " + errorMessages);
+//		System.out.println("Error message : " + errorMessages);
 		if (errorMessages.size() == 0) {
 			Product product = modelMapper.map(productDTO, Product.class);
 			product.setId(productId);

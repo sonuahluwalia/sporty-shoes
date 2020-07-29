@@ -1,7 +1,7 @@
 package com.sporty.shoes.service.impl;
 
-
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,39 +20,35 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepositry;
-	
 
 	@Override
 	public String changePassword(String password) {
-		System.out.println("reached changed password service");
-		System.out.println("Password is: "+password);
-		MyUserDetails securedUser = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println("Username is: " + securedUser.getUsername());
+//		System.out.println("reached changed password service");
+//		System.out.println("Password is: "+password);
+		MyUserDetails securedUser = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+//		System.out.println("Username is: " + securedUser.getUsername());
 		User user = userRepositry.getUserByUsername(securedUser.getUsername());
 		user.setPassword(SecuredPasswordGenerator.securedPassword(password));
 		user.setModifiedAt(new Date());
-		if (userRepositry.save(user) != null ) {
-			System.out.println(user.getName() + " password changed successfully");
-			return user.getName() + " password changed successfully";	
+		if (userRepositry.save(user) != null) {
+//			System.out.println(user.getName() + " password changed successfully");
+			return user.getName() + " password changed successfully";
 		} else {
-			System.out.println(user.getName() + " password not changed successfully");
+//			System.out.println(user.getName() + " password not changed successfully");
 			return user.getName() + " password not changed successfully";
 		}
-		
-	}
 
+	}
 
 	@Override
-	public Page<User> getUsers(Pageable pageable) {
-		return (Page<User>) userRepositry.findAllByPage(pageable);
+	public List<User> getUsers(Pageable pageable) {
+		return userRepositry.findAll(pageable).getContent();
 	}
-
 
 	@Override
 	public User findUserByName(String name) {
 		return userRepositry.getUserByUsername(name);
 	}
-	
-	
 
 }

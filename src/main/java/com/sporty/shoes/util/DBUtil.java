@@ -1,6 +1,9 @@
 package com.sporty.shoes.util;
 
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +17,7 @@ import com.sporty.shoes.repositry.ProductRepository;
 import com.sporty.shoes.repositry.PurchaseRepository;
 import com.sporty.shoes.repositry.UserRepository;
 import com.sporty.shoes.security.SecuredPasswordGenerator;
+
 
 @Configuration
 public class DBUtil {
@@ -53,7 +57,7 @@ public class DBUtil {
 			user.setRole("ROLE_USER");
 			user.setEmail("user"+i+"@gmail.com");
 			userRepositry.save(user);
-
+	
 			
 			Product product = new Product();
 			product.setCategory(Category.MISC);
@@ -74,6 +78,11 @@ public class DBUtil {
 			purchase.setUpdatedAt(new Date());
 			purchaseRepositry.save(purchase);
 			
+//			List<Purchase> userListOfPurchases = new ArrayList<>();
+//			userListOfPurchases.add(purchase);
+//			user.setPurchase(userListOfPurchases);
+//			product.setPurchase(purchase);
+
 		}		
 	}
 }

@@ -31,8 +31,8 @@ public class UserController {
 	
 	@PostMapping("/changePassword")
 	public String changePassword(@RequestParam String password, Model model) {
-		System.out.println("reached changed password controller");
-		System.out.println("Password is " + password);
+//		System.out.println("reached changed password controller");
+//		System.out.println("Password is " + password);
 		model.addAttribute("message",userService.changePassword(password));
 		return "index";
 	}

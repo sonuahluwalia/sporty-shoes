@@ -1,9 +1,13 @@
 package com.sporty.shoes.controller.rest;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +33,10 @@ public class UserRestController {
 		if (page < 0 || size < 0) {
 			return new ResponseEntity<T>((T) Constants.invalidPageAndSize, HttpStatus.BAD_REQUEST);
 		} else {
-			PageRequest pageRequest = PageRequest.of(page - 1, size);
-			return new ResponseEntity<T>((T) userService.getUsers(pageRequest), HttpStatus.OK);
+			Pageable pageRequest = PageRequest.of(page - 1, size);
+			List<User> userList = userService.getUsers(pageRequest);
+//			System.out.println("User: " + userList.get(0));
+			return new ResponseEntity<T>((T) userList, HttpStatus.OK);
 
 		}
 	}

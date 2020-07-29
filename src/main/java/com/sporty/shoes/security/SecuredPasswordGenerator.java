@@ -9,7 +9,7 @@ public class SecuredPasswordGenerator {
         String rawPassword = "admin";
         String encodedPassword = encoder.encode(rawPassword);
          
-        System.out.println(encodedPassword);
+ //       System.out.println(encodedPassword);
     }
     public static String securedPassword(String rawPassword) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

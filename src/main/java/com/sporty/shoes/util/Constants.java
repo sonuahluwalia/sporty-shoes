@@ -17,6 +17,7 @@ public class Constants {
 	public static final String invalidPageAndSize = "Page and Size should be greater than zero";
 	public static final String userNotFound = "User not found";
 	
+	public static final String invalidDateFormat = "Date format should be yyyy-MM-dd";
 	
 	
 }
