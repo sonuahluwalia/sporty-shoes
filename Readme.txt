@@ -5,7 +5,7 @@ Requirements:
 4. Admin can change product categories -done
 5. Admin can view list of all users - done
 6. Admin can search users by name - done
-7. Admin can view purchase reports
+7. Admin can view purchase reports - done
 8. Admin can filter the purchase reports by date and category
 
 
@@ -57,7 +57,21 @@ If user is not there, user not found message is given
 Purchase API:
 read(using pagination by giving page number & size)
 findByDate
+
 findByCategory
 
 
 curl -u admin:admin -X GET "http://localhost:8080/purchase/getPurchaseReportByCreatedDate?createdAt=2020-07-29&page=1&size=1" -H "accept: */*"
+
+
+curl -u admin:admin -X GET "http://localhost:8080/users/list?page=1&size=2" -H "accept: */*"
+
+
+curl -u admin:admin -X GET "http://localhost:8080/product/getProducts?page=1&size=2" -H "accept: */*"
+
+curl -u admin:admin -X GET "http://localhost:8080/purchase/getPurchases?page=1&size=2" -H "accept: */*"
+
+curl  -u admin:admin -X GET "http://localhost:8080/purchase/getPurchaseReportByCategory?category=MISC&page=1&size=1" -H "accept: */*"
+
+
+curl -u admin:admin -X POST "http://localhost:8080/product/add" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"category\": \"sfds\", \"cost\": 0, \"description\": \"string\", \"manufacturerName\": \"string\", \"model\": \"string\", \"productname\": \"string\"}"

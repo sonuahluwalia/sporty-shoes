@@ -1,20 +1,20 @@
 package com.sporty.shoes.dto;
 
-import java.util.Date;
+import javax.validation.constraints.Email;
 
-import com.sporty.shoes.entity.Category;
+import com.sporty.shoes.ann.ValueOfEnumProductCategory;
+import com.sporty.shoes.entity.ProductCategory;
 
-//TODO: do the purchase dto to make full report data available on the rest api
+import lombok.Data;
+
+@Data
 public class PurchaseDTO {
-	private Long id;
+	
 	private String email;
 	private String username;
 	private String productname;
-	private String productdescription;
+	private String description;
 	private Double cost;
-	private Category category;
-	private Date createdAt;
-	private Date updatedAt;
-
+	private String category;
 	
 }

@@ -35,12 +35,15 @@ public interface PurchaseRepository extends CrudRepository<Purchase, Long> {
 	public Page<Purchase> findAllByCreatedAtBetween(Date createdAtStart, Date createdAtEnd, Pageable pageable);
 
 //	Page<Purchase> findAllByCreatedAtBetween(Date createdAtStart, Date createdAtEnd, Pageable pageable);
-	@Query("SELECT p FROM Purchase p WHERE p.product.category = :category")
-	public Purchase getPurchaseReportByCategory(@Param("category") String category);
+	@Query("FROM Purchase p WHERE p.product.category = :category")
+	public Page<Purchase> getPurchaseReportByCategory(@Param("category") String category, Pageable pageable);
 
 	@Query("select p from Purchase p")
 	Page<Purchase> findAllByPage(Pageable pageable);
 
+	
+	
+	
 //    @Query("select p from Purchase p join p.users u join p.products pr where p.purchase_id = ?1 and u.user_id = ?2 and pr.product_id = ?3")
 //    Page<Purchase> getPurschase(String purchaseId, String userid, String productid, Pageable pageable);  
 

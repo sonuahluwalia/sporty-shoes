@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.sporty.shoes.entity.Category;
+import com.sporty.shoes.entity.ProductCategory;
 import com.sporty.shoes.entity.Product;
 import com.sporty.shoes.entity.Purchase;
 import com.sporty.shoes.entity.User;
@@ -36,7 +36,7 @@ public class DBUtil {
 		
 		
 		User user = new User();
-		user.setName("admin");
+		user.setUsername("admin");
 		user.setPassword(SecuredPasswordGenerator.securedPassword("admin"));
 		user.setCreatedAt(new Date());
 		user.setModifiedAt(new Date());
@@ -49,7 +49,7 @@ public class DBUtil {
 		
 		for(int i = 1; i < 50; i++) {
 			user = new User();
-			user.setName("user"+i);
+			user.setUsername("user"+i);
 			user.setPassword(SecuredPasswordGenerator.securedPassword("user"+i));
 			user.setCreatedAt(new Date());
 			user.setModifiedAt(new Date());
@@ -60,13 +60,13 @@ public class DBUtil {
 	
 			
 			Product product = new Product();
-			product.setCategory(Category.MISC);
+			product.setCategory(ProductCategory.MISC.toString());
 			product.setCost((double) (120+i));
 			product.setCreatedAt(new Date());
 			product.setDescription("Product Description" + i );
 			product.setManufacturerName("Manufacturer Name: " + i);
 			product.setModifiedAt(new Date());
-			product.setName("Product Name "+ i);
+			product.setProductname("Product Name "+ i);
 			product.setModel("Model Number "+i);
 			productRepositry.save(product);
 		

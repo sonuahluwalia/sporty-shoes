@@ -18,6 +18,7 @@ public class Constants {
 	public static final String userNotFound = "User not found";
 	
 	public static final String invalidDateFormat = "Date format should be yyyy-MM-dd";
+	public static final String incorrectCategory = "Category should be one of these - ELECTRONICS, CLOTHES, FURNITURE, CONSTRUCTION, MISC";
 	
 	
 }

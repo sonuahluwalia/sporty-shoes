@@ -23,20 +23,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String changePassword(String password) {
-//		System.out.println("reached changed password service");
-//		System.out.println("Password is: "+password);
 		MyUserDetails securedUser = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
-//		System.out.println("Username is: " + securedUser.getUsername());
 		User user = userRepositry.getUserByUsername(securedUser.getUsername());
 		user.setPassword(SecuredPasswordGenerator.securedPassword(password));
 		user.setModifiedAt(new Date());
 		if (userRepositry.save(user) != null) {
-//			System.out.println(user.getName() + " password changed successfully");
-			return user.getName() + " password changed successfully";
+			return user.getUsername() + " password changed successfully";
 		} else {
-//			System.out.println(user.getName() + " password not changed successfully");
-			return user.getName() + " password not changed successfully";
+			return user.getUsername() + " password not changed successfully";
 		}
 
 	}
@@ -50,5 +45,4 @@ public class UserServiceImpl implements UserService {
 	public User findUserByName(String name) {
 		return userRepositry.getUserByUsername(name);
 	}
-
 }

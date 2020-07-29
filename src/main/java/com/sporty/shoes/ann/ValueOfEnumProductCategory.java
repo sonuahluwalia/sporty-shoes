@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy = ValueOfEnumValidator.class)
-public @interface ValueOfEnumCategory {
+public @interface ValueOfEnumProductCategory {
     Class<? extends Enum<?>> enumClass();
     String message() default "Category should be one of these - ELECTRONICS, CLOTHES, FURNITURE, CONSTRUCTION, MISC";
     Class<?>[] groups() default {};

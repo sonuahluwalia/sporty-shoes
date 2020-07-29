@@ -15,8 +15,8 @@ import com.sporty.shoes.entity.User;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
  
-    @Query("SELECT p FROM Product p WHERE p.name = :name")
-    public Product getProductByName(@Param("name") String name);
+    @Query("SELECT p FROM Product p WHERE p.productname = :productname")
+    public Product getProductByName(@Param("productname") String productname);
  
     @Query("select p from Product p")
     Page<Product> findAllByPage(Pageable pageable);

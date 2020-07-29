@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,14 +31,14 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "product_id")
 	private Long id;
-	private String name;
+	private String productname;
 	private String description;
 	private Date createdAt;
 	private Date modifiedAt;
 	private String manufacturerName;
 	private String model;
 	private Double cost;
-	private Category category;
+	private String category;
 
 //	@OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
 //	private Purchase purchase;

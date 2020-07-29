@@ -13,8 +13,8 @@ import com.sporty.shoes.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
  
-    @Query("SELECT u FROM User u WHERE u.name = :name")
-    public User getUserByUsername(@Param("name") String name);
+    @Query("SELECT u FROM User u WHERE u.username = :username")
+    public User getUserByUsername(@Param("username") String username);
     
     @Query("select u from User u")
     Page<User> findAllByPage(Pageable pageable);

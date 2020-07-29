@@ -1,6 +1,6 @@
 package com.sporty.shoes.entity;
 
-public enum Category {
+public enum ProductCategory {
 
 	ELECTRONICS, CLOTHES, FURNITURE, CONSTRUCTION, MISC
 }

@@ -1,5 +1,6 @@
 package com.sporty.shoes.controller.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sporty.shoes.dto.ProductDTO;
+import com.sporty.shoes.dto.UserDTO;
 import com.sporty.shoes.entity.Product;
+import com.sporty.shoes.entity.User;
 import com.sporty.shoes.service.iface.ProductService;
 import com.sporty.shoes.util.Constants;
 import com.sporty.shoes.util.ControllerUtil;
@@ -93,7 +96,14 @@ public class ProductRestController {
 			return new ResponseEntity<T>((T) Constants.invalidPageAndSize, HttpStatus.BAD_REQUEST);
 		} else {
 			PageRequest pageRequest = PageRequest.of(page - 1, size);
-			return new ResponseEntity<T>((T) productService.getProducts(pageRequest), HttpStatus.OK);
+			List<Product> productList = productService.getProducts(pageRequest);
+			List<ProductDTO> productDTOlist = new ArrayList<>();
+			for(Product product: productList) {
+				ProductDTO productDTO = modelMapper.map(product, ProductDTO.class);
+				productDTOlist.add(productDTO);	
+			}
+	
+			return new ResponseEntity<T>((T) productDTOlist, HttpStatus.OK);
 
 		}
 	}
